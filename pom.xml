@@ -95,7 +95,7 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <urlhttp://54.159.3.252:8181/mylandmarktech/repository/tesla-releases/</url>
+	      <urlh>ttp://54.159.3.252:8181/mylandmarktech/repository/tesla-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
