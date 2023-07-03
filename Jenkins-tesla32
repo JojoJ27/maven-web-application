@@ -1,0 +1,23 @@
+node{
+    def mavenHome = tool name: 'maven 3.9.2'
+  stage('1.CodeClone'){
+      git "https://github.com/JojoJ27/maven-web-application"
+  }
+  stage('2.MavenBuild'){
+      sh "${mavenHome}/bin/mvn package"
+  }
+  stage('3CodeQualityAnalysis'){
+      sh "${mavenHome}/bin/mvn sonar:sonar"
+  }
+  stage('4UploadArtifacts'){
+      sh "${mavenHome}/bin/mvn deploy"
+  }
+  stage('5Deploy'){
+      deploy adapters: [tomcat9(credentialsId: '5eb3472c-81d2-4920-9074-a3b33fc6b4fe', path: '', url: 'http://100.26.60.66:8177/')], contextPath: null, war: 'target/*war'
+  }
+  stage('6Notification'){emailext body: '''Hello Team,
+
+Build Status 
+
+Jojo''', recipientProviders: [developers(), upstreamDevelopers(), contributor()], subject: 'Build Status ', to: 'jojobab2727@gmail.com'}
+}
