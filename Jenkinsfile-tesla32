@@ -6,7 +6,6 @@ node{
   stage('2.MavenBuild'){
       sh "${mavenHome}/bin/mvn package"
   }
-/*
   stage('3CodeQualityAnalysis'){
       sh "${mavenHome}/bin/mvn sonar:sonar"
   }
@@ -22,5 +21,4 @@ Build Status
 
 Jojo''', recipientProviders: [developers(), upstreamDevelopers(), contributor()], subject: 'Build Status ', to: 'jojobab2727@gmail.com'}
 }
-*/
 }
